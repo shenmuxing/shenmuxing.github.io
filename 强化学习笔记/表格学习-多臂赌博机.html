@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"shenmuxing.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="强化学习是评估性反馈$\qquad$ 一个k臂赌博机问题q_*(a)&#x3D;动作-价值方法10臂测试平台$ $ 增量式实现跟踪一个非平稳问题乐观初始值">
+  <meta name="description" content="评估性反馈是强化学习的一种重要特征$\qquad$本章的主要目的都意在介绍评估性反馈的观点。即强化学习需要主动反复实验从而试探出好的动作。$\qquad$与评估性反馈相对的是指导性反馈，即完成什么动作是对的(如分类问题，正确类别应该是猫还是狗；拟合问题正确结果是3.14159还是2.71828)$\qquad$当然也有评估性反馈和指导性反馈结合的可能。 引出问题：一个k臂赌博机问题 问题定义：k臂">
 <meta property="og:type" content="website">
 <meta property="og:title" content="表格型求解方法 第二章 多臂赌博机">
 <meta property="og:url" content="https://shenmuxing.github.io/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%A1%A8%E6%A0%BC%E5%AD%A6%E4%B9%A0-%E5%A4%9A%E8%87%82%E8%B5%8C%E5%8D%9A%E6%9C%BA.html">
 <meta property="og:site_name" content="参木星的博客">
-<meta property="og:description" content="强化学习是评估性反馈$\qquad$ 一个k臂赌博机问题q_*(a)&#x3D;动作-价值方法10臂测试平台$ $ 增量式实现跟踪一个非平稳问题乐观初始值">
+<meta property="og:description" content="评估性反馈是强化学习的一种重要特征$\qquad$本章的主要目的都意在介绍评估性反馈的观点。即强化学习需要主动反复实验从而试探出好的动作。$\qquad$与评估性反馈相对的是指导性反馈，即完成什么动作是对的(如分类问题，正确类别应该是猫还是狗；拟合问题正确结果是3.14159还是2.71828)$\qquad$当然也有评估性反馈和指导性反馈结合的可能。 引出问题：一个k臂赌博机问题 问题定义：k臂">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-04T07:03:55.000Z">
-<meta property="article:modified_time" content="2022-05-04T09:31:06.776Z">
+<meta property="article:modified_time" content="2022-05-06T13:13:40.581Z">
 <meta property="article:author" content="Zjy">
 <meta name="twitter:card" content="summary">
 
@@ -183,8 +183,30 @@
       
       
       <div class="post-body">
-          <h2 id="强化学习是评估性反馈"><a href="#强化学习是评估性反馈" class="headerlink" title="强化学习是评估性反馈"></a>强化学习是评估性反馈</h2><p>$\qquad$</p>
-<h2 id="一个k臂赌博机问题"><a href="#一个k臂赌博机问题" class="headerlink" title="一个k臂赌博机问题"></a>一个k臂赌博机问题</h2><script type="math/tex; mode=display">q_*(a)=</script><h2 id="动作-价值方法"><a href="#动作-价值方法" class="headerlink" title="动作-价值方法"></a>动作-价值方法</h2><h2 id="10臂测试平台"><a href="#10臂测试平台" class="headerlink" title="10臂测试平台"></a>10臂测试平台</h2><p>$ $</p>
+          <h2 id="评估性反馈是强化学习的一种重要特征"><a href="#评估性反馈是强化学习的一种重要特征" class="headerlink" title="评估性反馈是强化学习的一种重要特征"></a>评估性反馈是强化学习的一种重要特征</h2><p>$\qquad$本章的主要目的都意在介绍评估性反馈的观点。即强化学习需要主动反复实验从而试探出好的动作。<br>$\qquad$与评估性反馈相对的是指导性反馈，即完成什么动作是对的(如分类问题，正确类别应该是猫还是狗；拟合问题正确结果是3.14159还是2.71828)<br>$\qquad$当然也有评估性反馈和指导性反馈结合的可能。</p>
+<h2 id="引出问题：一个k臂赌博机问题"><a href="#引出问题：一个k臂赌博机问题" class="headerlink" title="引出问题：一个k臂赌博机问题"></a>引出问题：一个k臂赌博机问题</h2><ul>
+<li><p>问题定义：k臂赌博机有k个控制杆，拉动第i个控制杆就是进行第i种<strong>动作</strong>，不同的动作有不同的期望收益。目标就是在多次重复选择后，可以把动作集中在最好的控制杆上。</p>
+</li>
+<li><p>符号：</p>
+<ul>
+<li>时刻t选择的动作:$A_t$</li>
+<li>时刻t的收益：$R_t$</li>
+<li>动作$a$的<strong>价值</strong>:该动作的期望收益$q_*(a)=\mathbb{E}(R_t|A_t=a)$</li>
+<li>对动作$a$在时刻t的估计$Q_t(a)$</li>
+</ul>
+</li>
+<li>贪心的动作：时刻t估计价值最高的动作。</li>
+<li>开发：选择贪心的动作</li>
+<li>试探：选择非贪心的动作</li>
+</ul>
+<h2 id="动作-价值方法"><a href="#动作-价值方法" class="headerlink" title="动作-价值方法"></a>动作-价值方法</h2><ul>
+<li>定义：使用这些价值的估计来进行动作的选择</li>
+<li>怎样估计动作的价值？<ul>
+<li><h2 id="10臂测试平台"><a href="#10臂测试平台" class="headerlink" title="10臂测试平台"></a>10臂测试平台</h2></li>
+</ul>
+</li>
+</ul>
+<p>$ $</p>
 <h2 id="增量式实现"><a href="#增量式实现" class="headerlink" title="增量式实现"></a>增量式实现</h2><h2 id="跟踪一个非平稳问题"><a href="#跟踪一个非平稳问题" class="headerlink" title="跟踪一个非平稳问题"></a>跟踪一个非平稳问题</h2><h2 id="乐观初始值"><a href="#乐观初始值" class="headerlink" title="乐观初始值"></a>乐观初始值</h2><h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>
       </div>
       
@@ -246,7 +268,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%98%AF%E8%AF%84%E4%BC%B0%E6%80%A7%E5%8F%8D%E9%A6%88"><span class="nav-number">1.</span> <span class="nav-text">强化学习是评估性反馈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AAk%E8%87%82%E8%B5%8C%E5%8D%9A%E6%9C%BA%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">一个k臂赌博机问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E4%BD%9C-%E4%BB%B7%E5%80%BC%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">动作-价值方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10%E8%87%82%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0"><span class="nav-number">4.</span> <span class="nav-text">10臂测试平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.</span> <span class="nav-text">增量式实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%9F%E8%B8%AA%E4%B8%80%E4%B8%AA%E9%9D%9E%E5%B9%B3%E7%A8%B3%E9%97%AE%E9%A2%98"><span class="nav-number">6.</span> <span class="nav-text">跟踪一个非平稳问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E5%88%9D%E5%A7%8B%E5%80%BC"><span class="nav-number">7.</span> <span class="nav-text">乐观初始值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text"> </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%84%E4%BC%B0%E6%80%A7%E5%8F%8D%E9%A6%88%E6%98%AF%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%80%E7%A7%8D%E9%87%8D%E8%A6%81%E7%89%B9%E5%BE%81"><span class="nav-number">1.</span> <span class="nav-text">评估性反馈是强化学习的一种重要特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%87%BA%E9%97%AE%E9%A2%98%EF%BC%9A%E4%B8%80%E4%B8%AAk%E8%87%82%E8%B5%8C%E5%8D%9A%E6%9C%BA%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">引出问题：一个k臂赌博机问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E4%BD%9C-%E4%BB%B7%E5%80%BC%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">动作-价值方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10%E8%87%82%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0"><span class="nav-number">4.</span> <span class="nav-text">10臂测试平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.</span> <span class="nav-text">增量式实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%9F%E8%B8%AA%E4%B8%80%E4%B8%AA%E9%9D%9E%E5%B9%B3%E7%A8%B3%E9%97%AE%E9%A2%98"><span class="nav-number">6.</span> <span class="nav-text">跟踪一个非平稳问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E5%88%9D%E5%A7%8B%E5%80%BC"><span class="nav-number">7.</span> <span class="nav-text">乐观初始值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text"> </span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -352,6 +374,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
