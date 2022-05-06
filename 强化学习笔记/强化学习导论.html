@@ -28,7 +28,7 @@
 <meta property="og:description" content="我的想法$\qquad$第一次工业革命开始的标志是瓦特改良蒸汽机，第一次工业革命结束的标志是制造出了可以生产机器的机器。同理，强化学习和元学习也是生产人工智能的人工智能，可以想见他们很可能是结束这次科技革命的关键。 $\qquad$本专栏从强化学习的基本原理开始，以 强化学习是什么$\qquad$强化学习不同于有监督学习，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-04T06:43:09.000Z">
-<meta property="article:modified_time" content="2022-05-04T07:03:04.051Z">
+<meta property="article:modified_time" content="2022-05-06T02:22:32.775Z">
 <meta property="article:author" content="Zjy">
 <meta name="twitter:card" content="summary">
 
@@ -261,12 +261,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shenmuxing" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shenmuxing" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
 
 
 
@@ -348,6 +353,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
