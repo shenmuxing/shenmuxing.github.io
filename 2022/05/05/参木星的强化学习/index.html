@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"shenmuxing.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="强化学习和我的渊源$\qquad$本人大学本科在管理学院度过，在管理学问题中，有很多优化决策相关的问题，比如物料规划、动态规划等等。我就曾经遇到过一个决策的问题，那个问题有20多个变量，时间跨度长达60年，最优解需要动态规划求解，时间复杂度显然为$N^{20}$,这显然不是一个目前的计算能力可以解决的问题，最近发现强化学习有解决这种问题的可能性。 $\qquad$另外，笔者一直都有着一个训练一种机">
+  <meta name="description" content="强化学习和我的渊源$\qquad$本人大学本科在管理学院度过，在管理学问题中，有很多优化决策相关的问题，比如物料规划、动态规划等等。我就曾经遇到过一个决策的问题，那个问题有20多个变量，时间跨度长达60年，最优解需要动态规划求解，时间复杂度显然为$N^{20}$,这显然不是一个目前的计算能力可以解决的问题，最近发现强化学习有解决这种问题的可能性。$\qquad$另外，笔者一直都有着一个训练一种机器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="参木星的强化学习简介">
 <meta property="og:url" content="https://shenmuxing.github.io/2022/05/05/%E5%8F%82%E6%9C%A8%E6%98%9F%E7%9A%84%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="参木星的博客">
-<meta property="og:description" content="强化学习和我的渊源$\qquad$本人大学本科在管理学院度过，在管理学问题中，有很多优化决策相关的问题，比如物料规划、动态规划等等。我就曾经遇到过一个决策的问题，那个问题有20多个变量，时间跨度长达60年，最优解需要动态规划求解，时间复杂度显然为$N^{20}$,这显然不是一个目前的计算能力可以解决的问题，最近发现强化学习有解决这种问题的可能性。 $\qquad$另外，笔者一直都有着一个训练一种机">
+<meta property="og:description" content="强化学习和我的渊源$\qquad$本人大学本科在管理学院度过，在管理学问题中，有很多优化决策相关的问题，比如物料规划、动态规划等等。我就曾经遇到过一个决策的问题，那个问题有20多个变量，时间跨度长达60年，最优解需要动态规划求解，时间复杂度显然为$N^{20}$,这显然不是一个目前的计算能力可以解决的问题，最近发现强化学习有解决这种问题的可能性。$\qquad$另外，笔者一直都有着一个训练一种机器">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-05T03:29:27.000Z">
-<meta property="article:modified_time" content="2022-05-06T11:34:25.013Z">
+<meta property="article:modified_time" content="2022-05-07T03:22:34.292Z">
 <meta property="article:author" content="Zjy">
 <meta name="twitter:card" content="summary">
 
@@ -194,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-06 19:34:25" itemprop="dateModified" datetime="2022-05-06T19:34:25+08:00">2022-05-06</time>
+                <time title="修改时间：2022-05-07 11:22:34" itemprop="dateModified" datetime="2022-05-07T11:22:34+08:00">2022-05-07</time>
               </span>
 
           
@@ -208,15 +208,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="强化学习和我的渊源"><a href="#强化学习和我的渊源" class="headerlink" title="强化学习和我的渊源"></a>强化学习和我的渊源</h2><p>$\qquad$本人大学本科在管理学院度过，在管理学问题中，有很多优化决策相关的问题，比如物料规划、动态规划等等。我就曾经遇到过一个决策的问题，那个问题有20多个变量，时间跨度长达60年，最优解需要动态规划求解，时间复杂度显然为$N^{20}$,这显然不是一个目前的计算能力可以解决的问题，最近发现强化学习有解决这种问题的可能性。</p>
-<p>$\qquad$另外，笔者一直都有着一个训练一种机器来完成自动决策的热情。比如在大学期间，每次打游戏，都在想能不能训练一条狗，让他帮我打呢？我就只管看着，最好能够一边打一边向我解释，为什么这么打，就像看一个优秀的主播直播一样。</p>
-<p>$\qquad$后来发现强化学习在管理学领域的应用非常多，比如阿里巴巴专门出版了《强化学习在阿里中的应用》。学好强化学习兴许也是以后有能用来生存的一技之长。</p>
-<p>$\qquad$以上就是笔者进行强学习的原始目的。下面展示强化学习专栏的目录。</p>
+        <h2 id="强化学习和我的渊源"><a href="#强化学习和我的渊源" class="headerlink" title="强化学习和我的渊源"></a>强化学习和我的渊源</h2><p>$\qquad$本人大学本科在管理学院度过，在管理学问题中，有很多优化决策相关的问题，比如物料规划、动态规划等等。我就曾经遇到过一个决策的问题，那个问题有20多个变量，时间跨度长达60年，最优解需要动态规划求解，时间复杂度显然为$N^{20}$,这显然不是一个目前的计算能力可以解决的问题，最近发现强化学习有解决这种问题的可能性。<br>$\qquad$另外，笔者一直都有着一个训练一种机器来完成自动决策的热情。比如在大学期间，每次打游戏，都在想能不能训练一条狗，让他帮我打呢？我就只管看着，最好能够一边打一边向我解释，为什么这么打，就像看一个优秀的主播直播一样。<br>$\qquad$后来发现强化学习在管理学领域的应用非常多，比如阿里巴巴专门出版了《强化学习在阿里中的应用》。学好强化学习兴许也是以后有能用来生存的一技之长。<br>$\qquad$以上就是笔者进行强学习的原始目的。需要说明的是，截止到现在，本专栏的主要目的都是面向笔者本人，方便整理、构思回顾的，如果需要改成面向其他读者的文章，请联系我。下面展示强化学习专栏的目录。</p>
 <h2 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h2><ol>
-<li><a href="../强化学习笔记/强化学习导论">我的导论</a></li>
-<li><p>表格学习</p>
-<ol>
-<li><a href="../强化学习笔记/表格学习-多臂赌博机">多臂赌博机的例子</a></li>
+<li><a href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%AF%BC%E8%AE%BA">我的导论</a></li>
+<li>表格学习<ol>
+<li><a href="../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%A1%A8%E6%A0%BC%E5%AD%A6%E4%B9%A0-%E5%A4%9A%E8%87%82%E8%B5%8C%E5%8D%9A%E6%9C%BA">多臂赌博机的例子</a></li>
 </ol>
 </li>
 <li>练习题答案</li>
