@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: First-year Ph.D. Student
+subtitle: Jingye Zhao
 
 profile:
   align: right
