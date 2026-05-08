@@ -1,0 +1,4 @@
+interface:
+  display_name: "Website Build"
+  short_description: "Build and validate this al-folio site"
+  default_prompt: "Use $website-build to build and validate the local Jekyll website."

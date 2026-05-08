@@ -24,7 +24,7 @@ Here we will give you some tips on how to customize the website. One important t
   - [Modifying the CV information](#modifying-the-cv-information)
     - [RenderCV Format (Recommended)](#rendercv-format-recommended)
     - [JSONResume Format](#jsonresume-format)
-    - [Switching CV Sources (Without Deleting Files)](#switching-cv-sources-without-deleting-files)
+    - [Using Both Formats Simultaneously](#using-both-formats-simultaneously)
     - [Automatic PDF Generation (RenderCV only)](#automatic-pdf-generation-rendercv-only)
   - [Modifying the user and repository information](#modifying-the-user-and-repository-information)
     - [Configuring external service URLs](#configuring-external-service-urls)
@@ -41,6 +41,11 @@ Here we will give you some tips on how to customize the website. One important t
       - [Required fields](#required-fields)
       - [Optional fields](#optional-fields)
     - [Collections with categories and tags](#collections-with-categories-and-tags)
+    - [Creating custom metadata groups and archive pages](#creating-custom-metadata-groups-and-archive-pages)
+      - [Understanding Jekyll's special handling of fields](#understanding-jekylls-special-handling-of-fields)
+      - [Example: Adding a custom "adaptations" field](#example-adding-a-custom-adaptations-field)
+      - [Field naming best practices](#field-naming-best-practices)
+      - [Complete example: Book reviews with custom adaptations field](#complete-example-book-reviews-with-custom-adaptations-field)
   - [Adding a new publication](#adding-a-new-publication)
     - [Author annotation](#author-annotation)
     - [Buttons (through custom bibtex keywords)](#buttons-through-custom-bibtex-keywords)
@@ -49,6 +54,15 @@ Here we will give you some tips on how to customize the website. One important t
   - [Adding social media information](#adding-social-media-information)
   - [Adding a newsletter](#adding-a-newsletter)
   - [Configuring search features](#configuring-search-features)
+  - [Social media previews](#social-media-previews)
+    - [How to enable](#how-to-enable)
+    - [Configuring preview images](#configuring-preview-images)
+    - [Preview image best practices](#preview-image-best-practices)
+  - [Related posts](#related-posts)
+    - [How it works](#how-it-works)
+    - [Configuration](#configuration-1)
+    - [Disable related posts for a specific post](#disable-related-posts-for-a-specific-post)
+    - [Additional configuration in _config.yml](#additional-configuration-in-_configyml)
   - [Managing publication display](#managing-publication-display)
   - [Adding a Google Calendar](#adding-a-google-calendar)
     - [Basic usage](#basic-usage)
@@ -68,6 +82,14 @@ Here we will give you some tips on how to customize the website. One important t
   - [Scheduled Posts](#scheduled-posts)
     - [Name Format](#name-format)
     - [Important Notes](#important-notes)
+  - [GDPR Cookie Consent Dialog](#gdpr-cookie-consent-dialog)
+    - [How it works](#how-it-works-1)
+    - [When to use](#when-to-use)
+    - [How to enable](#how-to-enable-1)
+    - [Customizing the consent dialog](#customizing-the-consent-dialog)
+    - [Supported analytics providers](#supported-analytics-providers)
+    - [How it integrates with analytics](#how-it-integrates-with-analytics)
+    - [For developers](#for-developers)
   - [Setting up a Personal Access Token (PAT) for Google Scholar Citation Updates](#setting-up-a-personal-access-token-pat-for-google-scholar-citation-updates)
     - [Why is a PAT required?](#why-is-a-pat-required)
     - [How to set up the PAT](#how-to-set-up-the-pat)
@@ -125,6 +147,16 @@ The configuration file [\_config.yml](_config.yml) contains the main configurati
 > Note that the `url` and `baseurl` settings are used to generate the links of the website, as explained in the [install instructions](INSTALL.md).
 
 All changes made to this file are only visible after you rebuild the website. That means that you need to run `bundle exec jekyll serve` again if you are running the website locally or push your changes to GitHub if you are using GitHub Pages. All other changes are visible immediately, you only need to refresh the page.
+
+If changes don't appear after refreshing, try:
+
+- **Hard refresh** to reload the page ignoring cached content:
+  - [Shift + F5 on Chromium-based browsers](https://support.google.com/chrome/answer/157179#zippy=%2Cwebpage-shortcuts)
+  - [Ctrl + F5 on Firefox-based browsers](https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly)
+- **Clear your browser cache** completely
+- **Use a private/incognito session** to ensure no cached content:
+  - [Chrome](https://support.google.com/chrome/answer/95464)
+  - [Firefox](https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history)
 
 ## GitHub Copilot Customization Agent
 
@@ -235,7 +267,7 @@ Understanding al-folio's technology stack will help you better customize and ext
 - **JavaScript**: Minimal JavaScript is used for interactive features like the dark mode toggle, search functionality, and dynamic content rendering.
 - **MathJax**: For rendering mathematical equations in LaTeX format on your pages and blog posts.
 - **Mermaid**: For creating diagrams (flowcharts, sequence diagrams, etc.) directly in Markdown.
-- **Font Awesome and Academicons**: Icon libraries used throughout the theme for visual elements.
+- **Font Awesome, Academicons, and Scholar Icons**: Icon libraries used throughout the theme for visual elements.
 
 ### Backend
 
@@ -247,16 +279,16 @@ Understanding al-folio's technology stack will help you better customize and ext
   - Minify CSS and JavaScript
 
 - **Ruby Gems** (Jekyll plugins): The project uses several Ruby plugins to extend Jekyll's functionality:
-  - `jekyll-scholar`: Manages bibliography files (BibTeX) and generates publication pages with citations
-  - `jekyll-archives-v2`: Creates archive pages for posts and collections organized by category, tag, or date
-  - `jekyll-paginate-v2`: Handles pagination for blog posts and archives
-  - `jekyll-feed`: Generates an Atom (RSS-like) feed for your content
-  - `jekyll-toc`: Automatically generates table of contents for pages with headers
-  - `jekyll-jupyter-notebook`: Integrates Jupyter notebooks into your site
-  - `jekyll-tabs`: Adds tabbed content support
-  - `jemoji`: Converts emoji shortcodes to emoji images
-  - `jekyll-minifier`: Minifies HTML, CSS, and JavaScript for better performance
   - `classifier-reborn`: Used for categorizing and finding related blog posts
+  - `jekyll-archives-v2`: Creates archive pages for posts and collections organized by category, tag, or date
+  - `jekyll-feed`: Generates an Atom (RSS-like) feed for your content
+  - `jekyll-jupyter-notebook`: Integrates Jupyter notebooks into your site
+  - `jekyll-minifier`: Minifies HTML, CSS, and JavaScript for better performance
+  - `jekyll-paginate-v2`: Handles pagination for blog posts and archives
+  - `jekyll-scholar`: Manages bibliography files (BibTeX) and generates publication pages with citations
+  - `jekyll-tabs`: Adds tabbed content support
+  - `jekyll-toc`: Automatically generates table of contents for pages with headers
+  - `jemoji`: Converts emoji shortcodes to emoji images
   - Other utilities: `jekyll-link-attributes`, `jekyll-imagemagick`, `jekyll-twitter-plugin`, `jekyll-get-json`, and more
 
 - **Python**: Used for utility scripts like citation updates via Google Scholar (located in `bin/`)
@@ -288,7 +320,7 @@ Understanding how these technologies work together will help you customize al-fo
 
 ## Modifying the CV information
 
-Your CV can be created using one of two formats. Choose the format that works best for you:
+Your CV can be created using one of two formats. Choose the format that works best for you, or use both simultaneously by switching between them:
 
 ### RenderCV Format (Recommended)
 
@@ -297,11 +329,11 @@ Your CV can be created using one of two formats. Choose the format that works be
 **If you choose this format:**
 
 1. Edit your CV data in [`_data/cv.yml`](_data/cv.yml)
-2. Delete [`assets/json/resume.json`](assets/json/resume.json) so the website uses the YAML file
-3. (Optional) Customize how the PDF is styled by editing:
+2. Optionally customize how the PDF is styled by editing:
    - [`assets/rendercv/design.yaml`](assets/rendercv/design.yaml) — Design and styling
    - [`assets/rendercv/locale.yaml`](assets/rendercv/locale.yaml) — Localization and formatting
    - [`assets/rendercv/settings.yaml`](assets/rendercv/settings.yaml) — RenderCV settings
+3. To display only this format, delete [`assets/json/resume.json`](assets/json/resume.json) (optional)
 
 ### JSONResume Format
 
@@ -310,11 +342,11 @@ Your CV can be created using one of two formats. Choose the format that works be
 **If you choose this format:**
 
 1. Edit your CV data in [`assets/json/resume.json`](assets/json/resume.json)
-2. Delete [`_data/cv.yml`](_data/cv.yml) so the website uses the JSON file
+2. To display only this format, delete [`_data/cv.yml`](_data/cv.yml) (optional)
 
-### Switching CV Sources (Without Deleting Files)
+### Using Both Formats Simultaneously
 
-If you keep both CV files in your repository, you can switch which format displays on your website by setting the `cv_format` variable in the frontmatter of [`_pages/cv.md`](_pages/cv.md):
+You can keep both [`_data/cv.yml`](_data/cv.yml) and [`assets/json/resume.json`](assets/json/resume.json) in your repository and switch between them on your website by setting the `cv_format` frontmatter variable in [`_pages/cv.md`](_pages/cv.md):
 
 ```yaml
 ---
@@ -403,7 +435,7 @@ You can easily create your own collections for any type of content—teaching ma
 
 ### Creating a new collection
 
-To create a new collection, follow these steps. We will create a `teaching` collection, but you can replace `teaching` with any name you prefer:
+To create a new collection, follow these steps. We will create a `courses` collection, but you can replace `courses` with any name you prefer:
 
 1. **Add the collection to `_config.yml`**
 
@@ -417,9 +449,9 @@ To create a new collection, follow these steps. We will create a `teaching` coll
        output: true
      projects:
        output: true
-     teaching:
+     courses:
        output: true
-       permalink: /teaching/:path/
+       permalink: /courses/:path/
    ```
 
    - `output: true` makes the collection items accessible as separate pages
@@ -428,10 +460,10 @@ To create a new collection, follow these steps. We will create a `teaching` coll
 
 2. **Create a folder for your collection items**
 
-   Create a new folder in the root directory with an underscore prefix, matching your collection name. For a `teaching` collection, create `_teaching/`:
+   Create a new folder in the root directory with an underscore prefix, matching your collection name. For a `courses` collection, create `_courses/`:
 
    ```text
-   _teaching/
+   _courses/
    ├── course_1.md
    ├── course_2.md
    └── course_3.md
@@ -439,30 +471,36 @@ To create a new collection, follow these steps. We will create a `teaching` coll
 
 3. **Create a landing page for your collection**
 
-   Add a Markdown file in `_pages/` (e.g., `teaching.md`) that will serve as the main page for your collection. You can use [\_pages/projects.md](_pages/projects.md) or [\_pages/books.md](_pages/books.md) as a template and adapt it for your needs.
+   Add a Markdown file in `_pages/` (e.g., `courses.md`) that will serve as the main page for your collection. You can use [\_pages/projects.md](_pages/projects.md) or [\_pages/books.md](_pages/books.md) as a template and adapt it for your needs.
 
    In your landing page, access your collection using the `site.COLLECTION_NAME` variable:
 
    ```liquid
-   {% assign teaching_items = site.teaching | sort: 'date' | reverse %}
+   {% assign course_items = site.courses | sort: 'date' | reverse %}
 
-   {% for item in teaching_items %}
+   {% for item in course_items %}
      <h3>{{ item.title }}</h3>
      <p>{{ item.content }}</p>
    {% endfor %}
    ```
 
-   Replace `COLLECTION_NAME` with your actual collection name (e.g., `site.teaching`).
+4. **Add a navigation link to your collection page**
 
-4. **Add a link to your collection page**
+   Update [\_pages/dropdown.md](_pages/dropdown.md) or the navigation configuration of your page. In the frontmatter of your collection landing page (e.g., `_pages/courses.md`), add:
 
-   Update [\_pages/dropdown.md](_pages/dropdown.md) or the navigation configuration in [\_config.yml](_config.yml) to add a menu link to your new page.
+   ```yaml
+   nav: true
+   nav_order: 5
+   ```
+
+   - `nav: true` makes the page appear in the navigation menu
+   - `nav_order` sets the position in the menu (1 = first, 2 = second, etc.)
 
 5. **Create collection items**
 
-   Add Markdown files in your new collection folder (e.g., `_teaching/`) with appropriate frontmatter and content.
+   Add Markdown files in your new collection folder (e.g., `_courses/`) with appropriate frontmatter and content.
 
-For more information regarding collections, check [Jekyll official documentation](https://jekyllrb.com/docs/collections/) and [step-by=step guide](https://jekyllrb.com/docs/step-by-step/09-collections/).
+For more information regarding collections, check [Jekyll official documentation](https://jekyllrb.com/docs/collections/) and [step-by-step guide](https://jekyllrb.com/docs/step-by-step/09-collections/).
 
 ### Using frontmatter fields in your collection
 
@@ -552,6 +590,150 @@ Additional course content, information, or resources can be added here as markdo
 
 If you want to add category and tag support (like the blog posts have), you need to configure the `jekyll-archives` section in [\_config.yml](_config.yml). See how this is done with the `books` collection for reference. For more details, check the [jekyll-archives-v2 documentation](https://george-gca.github.io/jekyll-archives-v2/).
 
+### Creating custom metadata groups and archive pages
+
+Beyond the built-in `categories` and `tags` fields, you can create custom metadata fields for your collections to organize content in new ways. For example, if you have a book review collection, you might want to organize books by their **adaptations** (movies, TV shows, video games, etc.).
+
+#### Understanding Jekyll's special handling of fields
+
+Jekyll has **special built-in support** for only two fields:
+
+- **`categories`** – Automatically splits space-separated values into arrays
+- **`tags`** – Automatically splits space-separated values into arrays
+
+Custom fields (any field name you create) remain as **strings** and require explicit handling in your Liquid templates.
+
+#### Example: Adding a custom "adaptations" field
+
+1. **Add the field to your collection frontmatter**
+
+   In your collection item (e.g., `_books/the_godfather.md`):
+
+   ```yaml
+   ---
+   layout: book-review
+   title: The Godfather
+   author: Mario Puzo
+   categories: classics crime historical-fiction
+   adaptations: movie TV-series video-game novel-adaptation
+   ---
+   ```
+
+2. **Handle the custom field in your layout template**
+
+   In your layout file (e.g., `_layouts/book-review.liquid`), custom fields must be **split** into arrays before you can loop over them:
+
+   ```liquid
+   {% if page.adaptations %}
+     {% assign page_adaptations = page.adaptations | split: ' ' %}
+     {% for adaptation in page_adaptations %}
+       <a href="{{ adaptation | slugify | prepend: '/books/adaptation/' | relative_url }}">
+         <i class="fa-solid fa-film fa-sm"></i> {{ adaptation }}
+       </a>
+     {% endfor %}
+   {% endif %}
+   ```
+
+   **Why the `split: ' '` filter?** Because `adaptations` is a custom field, Jekyll doesn't automatically convert it to an array like it does for `categories` and `tags`. The `split: ' '` filter breaks the space-separated string into individual items.
+
+3. **Enable archive pages for your custom field**
+
+   Add your custom field to the `jekyll-archives` configuration in [\_config.yml](_config.yml):
+
+   ```yaml
+   jekyll-archives:
+     posts:
+       enabled:
+         - year
+         - tags
+         - categories
+     books:
+       enabled:
+         - year
+         - tags
+         - categories
+         - adaptations # Add your custom field here
+       permalinks:
+         year: "/:collection/:year/"
+         tags: "/:collection/:type/:name/"
+         categories: "/:collection/:type/:name/"
+         adaptations: "/:collection/:type/:name/" # Add permalink pattern here
+   ```
+
+4. **Test your archive pages**
+
+   After configuration, rebuild your site:
+
+   ```bash
+   docker compose down
+   docker compose up
+   ```
+
+   Your archive pages will be generated at:
+   - `/books/adaptations/movie/`
+   - `/books/adaptations/tv-series/` (slugified from `TV-series`)
+   - `/books/adaptations/video-game/` (slugified from `video-game`)
+
+   Each page will automatically display all items with that adaptation value.
+
+#### Field naming best practices
+
+- Use **lowercase** words separated by **hyphens** for multi-word values: `live-action`, `video-game`, `TV-series`
+- Choose **meaningful names** that describe the grouping: `genres`, `adaptations`, `media-types`, `settings`, etc.
+- Keep field values **short and consistent** across all items in your collection
+- Document custom fields in a README or comments for other contributors to understand
+
+#### Complete example: Book reviews with custom adaptations field
+
+**File: `_books/the_godfather.md`**
+
+```yaml
+---
+layout: book-review
+title: The Godfather
+author: Mario Puzo
+categories: classics crime historical-fiction
+tags: top-100
+adaptations: movie TV-series video-game
+---
+```
+
+**File: `_layouts/book-review.liquid` (partial)**
+
+```liquid
+{% if page.adaptations %}
+  <div class="adaptations">
+    <strong>Adaptations:</strong>
+    {% assign page_adaptations = page.adaptations | split: ' ' %}
+    {% for adaptation in page_adaptations %}
+      <a href="{{ adaptation | slugify | prepend: '/books/adaptation/' | relative_url }}">
+        {{ adaptation }}
+      </a>
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  </div>
+{% endif %}
+```
+
+**File: `_config.yml` (jekyll-archives section)**
+
+```yaml
+jekyll-archives:
+  books:
+    enabled:
+      - year
+      - categories
+      - tags
+      - adaptations
+    permalinks:
+      year: "/:collection/:year/"
+      categories: "/:collection/:type/:name/"
+      tags: "/:collection/:type/:name/"
+      adaptations: "/:collection/:type/:name/"
+```
+
+After rebuilding, users can browse books by adaptation at `/books/adaptations/movie/`, etc.
+
 ## Adding a new publication
 
 To add publications create a new entry in the [\_bibliography/papers.bib](_bibliography/papers.bib) file. You can find the BibTeX entry of a publication in Google Scholar by clicking on the quotation marks below the publication title, then clicking on "BibTeX", or also in the conference page itself. By default, the publications will be sorted by year and the most recent will be displayed first. You can change this behavior and more in the `Jekyll Scholar` section in [\_config.yml](_config.yml) file.
@@ -625,20 +807,36 @@ A variety of beautiful theme colors have been selected for you to choose from. T
 You can customize the layout and user interface in [\_config.yml](_config.yml):
 
 ```yaml
-navbar_fixed: true
-footer_fixed: true
 back_to_top: true
+footer_fixed: true
 max_width: 930px
+navbar_fixed: true
 ```
 
-- `navbar_fixed`: When `true`, the navigation bar stays fixed at the top of the page when scrolling. When `false`, it scrolls with the page content.
-- `footer_fixed`: When `true`, the footer remains fixed at the bottom of the viewport. When `false`, it appears at the end of the page content.
 - `back_to_top`: Displays a "back to top" button in the footer. When clicked, it smoothly scrolls the page back to the top.
+- `footer_fixed`: When `true`, the footer remains fixed at the bottom of the viewport. When `false`, it appears at the end of the page content.
 - `max_width`: Controls the maximum width of the main content area in pixels. The default is `930px`. You can adjust this to make your content wider or narrower.
+- `navbar_fixed`: When `true`, the navigation bar stays fixed at the top of the page when scrolling. When `false`, it scrolls with the page content.
 
 ## Adding social media information
 
-You can add your social media links by adding the specified information in the [\_data/socials.yml](_data/socials.yml) file. This information will appear at the bottom of the `About` page and in the search results by default, but this could be changed to appear at the header of the page by setting `enable_navbar_social: true` and doesn't appear in the search by setting `socials_in_search: false`, both in [\_config.yml](_config.yml).
+Social media information is managed through the [`jekyll-socials` plugin](https://github.com/george-gca/jekyll-socials). To add your social media links:
+
+1. Edit [`_data/socials.yml`](_data/socials.yml) to add your social profiles
+2. The plugin will automatically display the social icons based on the order they are defined in the file (see the comments at the top of `_data/socials.yml`)
+
+The template supports icons from:
+
+- [Academicons](https://jpswalsh.github.io/academicons/)
+- [Font Awesome](https://fontawesome.com/)
+- [Scholar Icons](https://louisfacun.github.io/scholar-icons/)
+
+Social media links will appear at the bottom of the `About` page and in the search results by default. You can customize this behavior in [`_config.yml`](_config.yml):
+
+- `enable_navbar_social: true` – Display social links in the navigation bar
+- `socials_in_search: false` – Remove social links from search results
+
+For more details, see the [`jekyll-socials` documentation](https://github.com/george-gca/jekyll-socials).
 
 ## Adding a newsletter
 
@@ -651,18 +849,141 @@ Depending on your specified footer behavior, the sign up form either will appear
 The theme includes a powerful search functionality that can be customized in [\_config.yml](_config.yml):
 
 ```yaml
+bib_search: true
+posts_in_search: true
 search_enabled: true
 socials_in_search: true
-posts_in_search: true
-bib_search: true
 ```
 
+- `bib_search`: Enables search within your publications/bibliography. When enabled, a search box appears on the publications page, allowing visitors to filter publications by title, author, venue, or year.
+- `posts_in_search`: Includes blog posts in the search index. Users can search for posts by title, content, or tags.
 - `search_enabled`: Enables the site-wide search feature. When enabled, a search box appears in the navigation bar, allowing users to search across your site content.
 - `socials_in_search`: Includes your social media links and contact information in search results. This makes it easier for visitors to find ways to connect with you.
-- `posts_in_search`: Includes blog posts in the search index. Users can search for posts by title, content, or tags.
-- `bib_search`: Enables search within your publications/bibliography. When enabled, a search box appears on the publications page, allowing visitors to filter publications by title, author, venue, or year.
 
 All these search features work in real-time and do not require a page reload.
+
+## Social media previews
+
+**al-folio** supports Open Graph (OG) meta tags, which create rich preview objects when your pages are shared on social media platforms like Twitter, Facebook, LinkedIn, and others. These previews include your site's image, title, and description.
+
+### How to enable
+
+To enable social media previews:
+
+1. Open `_config.yml` and set:
+
+   ```yaml
+   serve_og_meta: true
+   ```
+
+2. Rebuild your site:
+   ```bash
+   docker compose down && docker compose up
+   # or
+   bundle exec jekyll serve
+   ```
+
+Once enabled, all your site's pages will automatically include Open Graph meta tags in the HTML head element.
+
+### Configuring preview images
+
+You can configure what image displays in social media previews on a per-page or site-wide basis.
+
+**Site-wide default image:**
+
+Add the following to `_config.yml`:
+
+```yaml
+og_image: /assets/img/your-default-preview-image.png
+```
+
+Replace the path with your actual image location in `assets/img/`.
+
+**Per-page custom image:**
+
+To override the site-wide default for a specific page, add `og_image` to the page's frontmatter:
+
+```yaml
+---
+layout: page
+title: My Page
+og_image: /assets/img/custom-preview-image.png
+---
+```
+
+### Preview image best practices
+
+- **Dimensions:** Use 1200×630 pixels for optimal display on most social media platforms
+- **Format:** PNG or JPG formats work best
+- **Size:** Keep file size under 5MB
+- **Content:** Ensure the image clearly represents your page content
+
+When a page is shared on social media, the platform will display your configured image along with the page title, description (from your site title or page description), and URL.
+
+---
+
+## Related posts
+
+The theme can automatically display related posts at the bottom of each blog post. These are selected by finding the most recent posts that share common tags with the current post.
+
+### How it works
+
+- By default, the most recent posts that share at least one tag with the current post are displayed
+- You can customize how many posts are shown and how many tags must match
+- You can disable related posts for individual posts or across your entire site
+
+### Configuration
+
+To customize related posts behavior, edit the `related_blog_posts` section in `_config.yml`:
+
+```yaml
+related_blog_posts:
+  enabled: true
+  max_related: 5
+```
+
+- `enabled`: Set to `true` (default) to show related posts, or `false` to disable them site-wide
+- `max_related`: Maximum number of related posts to display (default: 5)
+
+The theme also uses tags to find related content. Make sure your blog posts include relevant tags in their frontmatter:
+
+```yaml
+---
+layout: post
+title: My Blog Post
+tags: machine-learning python
+---
+```
+
+### Disable related posts for a specific post
+
+To hide related posts on an individual blog post, add this to the post's frontmatter:
+
+```yaml
+---
+layout: post
+title: My Blog Post
+related_posts: false
+---
+```
+
+### Additional configuration in \_config.yml
+
+You can also customize related posts behavior with these settings:
+
+```yaml
+related_blog_posts:
+  enabled: true
+  max_related: 5
+```
+
+These settings control:
+
+- Which posts are considered "related" (based on shared tags)
+- How many related posts to display
+- The algorithm used to calculate post similarity (uses the `classifier-reborn` gem)
+
+---
 
 ## Managing publication display
 
@@ -694,7 +1015,7 @@ Place the image file in `assets/img/publication_preview/`.
 
 ## Adding a Google Calendar
 
-You can embed a Google Calendar on any page by using the `calendar.liquid` include. The calendar will automatically adapt to light and dark themes.
+You can embed a Google Calendar on any page by using the `calendar.liquid` include.
 
 ### Basic usage
 
@@ -711,7 +1032,7 @@ Replace:
 
 ### Enable the calendar script for your page
 
-To prevent unnecessary script loading, add `calendar: true` to the frontmatter of any page that displays a calendar:
+To enable the calendar on your page, add `calendar: true` to the frontmatter:
 
 ```yaml
 ---
@@ -720,6 +1041,8 @@ title: teaching
 calendar: true
 ---
 ```
+
+This setting prevents unnecessary script loading for pages that don't display a calendar.
 
 ### Optional: Customize the calendar style
 
@@ -750,7 +1073,7 @@ third_party_libraries:
 
 - `download`: When `false` (default), libraries are loaded from CDNs. When `true`, the specified library versions are downloaded during build and served from your site. This can improve performance but increases your repository size.
 - `version`: Specifies which version of each library to use. Update this to use a newer version.
-- `url`: Template URLs for loading the library. The `{{version}}` placeholder is replaced with the version number.
+- `url`: Template URLs for loading the library. The `{{version}}` placeholder is replaced with the version number automatically.
 - `integrity`: [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) hashes ensure that the library hasn't been tampered with. When updating a library version, you should also update its integrity hash.
 
 To update a library:
@@ -855,7 +1178,7 @@ To remove the repositories, you can:
 
 ### You can also remove pages through commenting out front-matter blocks
 
-For `.md` files in [\pages](_pages/) directory, if you do not want to completely edit or delete them but save for later use, you can temporarily disable these variables. But be aware that Jekyll only recognizes front matter when it appears as uncommented. The layout, permalink, and other front-matter behavior are disabled for that file.
+For `.md` files in [\_pages](_pages/) directory, if you do not want to completely edit or delete them but save for later use, you can temporarily disable these variables. But be aware that Jekyll only recognizes front matter when it appears as uncommented. The layout, permalink, and other front-matter behavior are disabled for that file.
 
 For example, books.md do:
 
@@ -930,6 +1253,111 @@ In this folder you need to store your file in the same format as you would in `_
   - `2025-08-27-file2.md` will be posted exactly on 27-August-2025
   - `File3.md` will not be posted at all
   - `2026-02-31-file4.md` is supposed to be posted on 31-February-2026, but there is no 31st in February hence this file will never be posted either
+
+## GDPR Cookie Consent Dialog
+
+**al-folio** includes a built-in GDPR-compliant cookie consent dialog to help you respect visitor privacy and comply with privacy regulations (GDPR, CCPA, etc.). The feature is powered by [Vanilla Cookie Consent](https://cookieconsent.orestbida.com/) and integrates with all analytics providers.
+
+### How it works
+
+- A consent dialog appears on the visitor's first visit to your site
+- Visitors can **accept all**, **reject all**, or **customize preferences** for analytics cookies
+- Analytics scripts (Google Analytics, Cronitor, Pirsch, Openpanel) are **blocked by default** and only run after explicit consent
+- Google Consent Mode ensures Google services operate in privacy mode before consent is granted
+- User preferences are saved in their browser and respected on subsequent visits
+- The dialog is mobile-responsive and supports multiple languages
+
+### When to use
+
+- ✅ **Required** if your site serves EU visitors and uses any analytics
+- ✅ Recommended for any website using analytics, tracking, or marketing tools
+- ❌ Not needed if your site doesn't use any analytics providers
+
+### How to enable
+
+1. Open `_config.yml` and locate the following line:
+
+   ```yaml
+   enable_cookie_consent: false
+   ```
+
+2. Change it to:
+
+   ```yaml
+   enable_cookie_consent: true
+   ```
+
+3. Rebuild your site:
+
+   ```bash
+   docker compose down && docker compose up
+   # or
+   bundle exec jekyll serve
+   ```
+
+4. The consent dialog will automatically appear on your site's homepage on first visit
+
+### Customizing the consent dialog
+
+The consent dialog configuration and messages are defined in [`_scripts/cookie-consent-setup.js`](_scripts/cookie-consent-setup.js). You can customize:
+
+- Dialog titles and button labels
+- Cookie categories and descriptions
+- Contact information links (points to `#contact` by default)
+- Language translations
+
+To modify the dialog, edit the `language.translations.en` section in `_scripts/cookie-consent-setup.js`. For example, to change the consent dialog title:
+
+```javascript
+consentModal: {
+  title: 'Your custom title here',
+  description: 'Your custom description...',
+  // ... other options
+}
+```
+
+### Supported analytics providers
+
+When cookie consent is enabled, these analytics providers are automatically blocked until the user consents:
+
+- **Google Analytics (GA4)** – Uses Google Consent Mode for privacy-first operation before consent
+- **Cronitor RUM** – Real User Monitoring for performance tracking
+- **Pirsch Analytics** – GDPR-compliant analytics alternative
+- **Openpanel Analytics** – Privacy-focused analytics platform
+
+Each provider only collects data if:
+
+1. It's enabled in `_config.yml` (e.g., `enable_google_analytics: true`)
+2. The user has granted consent to the "analytics" category in the consent dialog
+
+### How it integrates with analytics
+
+When `enable_cookie_consent: true`, the template automatically:
+
+1. Adds `type="text/plain" data-category="analytics"` to all analytics script tags
+2. This tells the cookie consent library to block these scripts until consent is granted
+3. Loads the consent library and initializes Google Consent Mode
+4. Updates consent preferences when the user changes them in the dialog
+
+You don't need to modify any analytics configuration—it works automatically.
+
+### For developers
+
+If you want to programmatically check consent status or react to consent changes, the library exposes the following:
+
+```javascript
+// Check if user has granted analytics consent
+window.CookieConsent.getCategories().analytics; // returns true or false
+
+// Listen for consent changes
+window.CookieConsent.onChange(function (consentData) {
+  // Handle consent change
+});
+```
+
+For more API details, see [Vanilla Cookie Consent documentation](https://cookieconsent.orestbida.com/).
+
+---
 
 ## Setting up a Personal Access Token (PAT) for Google Scholar Citation Updates
 

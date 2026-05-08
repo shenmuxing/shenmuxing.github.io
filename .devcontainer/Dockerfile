@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/jekyll
 
-# Fix "GPG error: ... NO_PUBKEY" for Yarn by removing the broken repository file.
-# The base image has an outdated or broken key for the Yarn repository.
-# Since we don't strictly need this specific Yarn repo (nodejs is usually enough or installed otherwise),
-# removing it allows apt-get update to succeed for other features.
+# Fix: Remove the broken Yarn repository from the apt sources.
+# This prevents 'apt-get update' from failing due to the missing GPG key.
+# (Yarn is already provided by the dev container features/nvm, so this system repo is unnecessary)
+# See issue #3487
 RUN rm -f /etc/apt/sources.list.d/yarn.list

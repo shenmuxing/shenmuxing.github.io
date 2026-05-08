@@ -1,0 +1,7 @@
+interface:
+  display_name: "Post Writing"
+  short_description: "Write posts for this Jekyll academic site."
+  default_prompt: "Use $post-writing to help me draft or revise a blog post for this website."
+
+policy:
+  allow_implicit_invocation: true
