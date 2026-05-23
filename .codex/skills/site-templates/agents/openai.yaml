@@ -1,0 +1,4 @@
+interface:
+  display_name: "Site Templates"
+  short_description: "Edit Liquid layouts, includes, and reusable page templates."
+  default_prompt: "Use $site-templates to modify Liquid templates for this site."

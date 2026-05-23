@@ -1,0 +1,4 @@
+interface:
+  display_name: "Site Assets"
+  short_description: "Work on SCSS, JavaScript, images, and frontend assets."
+  default_prompt: "Use $site-assets to update styling or frontend behavior."

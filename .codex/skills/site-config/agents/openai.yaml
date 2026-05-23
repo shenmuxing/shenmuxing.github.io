@@ -1,0 +1,4 @@
+interface:
+  display_name: "Site Config"
+  short_description: "Edit al-folio config and data files safely."
+  default_prompt: "Use $site-config to update _config.yml or _data files."

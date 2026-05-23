@@ -11,16 +11,16 @@ Jekyll automatically treats files in `_posts/` named `YYYY-MM-DD-title.md` as po
 
 ## Visibility Controls
 
-| Goal | Mechanism | Result |
-| --- | --- | --- |
-| Publish normally | `_posts/YYYY-MM-DD-slug.md` without `published: false` | Generates a post page and enters `site.posts`. |
-| Draft locally | `_drafts/slug.md` | Not generated unless the command uses `--drafts`. |
-| Disable a post in `_posts/` | `published: false` | Not generated in normal builds and not present in normal `site.posts`. |
-| Preview disabled posts | Build or serve with `--unpublished` | Includes posts marked `published: false` for local checking. |
-| Schedule later | Future date in filename/front matter | Usually skipped until the date unless future posts are enabled. |
-| Exclude from sitemap only | `sitemap: false` | Page still builds; sitemap omits it. |
+| Goal                           | Mechanism                                                 | Result                                                                                                           |
+| ------------------------------ | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Publish normally               | `_posts/YYYY-MM-DD-slug.md` without `published: false`    | Generates a post page and enters `site.posts`.                                                                   |
+| Draft locally                  | `_drafts/slug.md`                                         | Not generated unless the command uses `--drafts`.                                                                |
+| Disable a post in `_posts/`    | `published: false`                                        | Not generated in normal builds and not present in normal `site.posts`.                                           |
+| Preview disabled posts         | Build or serve with `--unpublished`                       | Includes posts marked `published: false` for local checking.                                                     |
+| Schedule later                 | Future date in filename/front matter                      | Usually skipped until the date unless future posts are enabled.                                                  |
+| Exclude from sitemap only      | `sitemap: false`                                          | Page still builds; sitemap omits it.                                                                             |
 | Hide from blog/home lists only | Custom field such as `hidden: true` plus template filters | No effect until `_pages/blog.md`, `_includes/latest_posts.liquid`, and other `site.posts` consumers are updated. |
-| Remove all posts from search | `_config.yml` `posts_in_search: false` | Global setting; not per-post. |
+| Remove all posts from search   | `_config.yml` `posts_in_search: false`                    | Global setting; not per-post.                                                                                    |
 
 Do not treat `sitemap: false` or `hidden: true` as private publishing controls. They do not prevent direct URL access if the page is generated.
 

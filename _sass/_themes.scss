@@ -29,6 +29,7 @@
   --global-back-to-top-text-color: #{v.$white-color};
   --global-newsletter-bg-color: #{v.$white-color};
   --global-newsletter-text-color: #{v.$black-color};
+  --global-accent-color: #c84a31;
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;
@@ -98,6 +99,7 @@ html[data-theme="dark"] {
   --global-back-to-top-text-color: #{v.$black-color};
   --global-newsletter-bg-color: #{v.$grey-color-light};
   --global-newsletter-text-color: #{v.$grey-color-dark};
+  --global-accent-color: #ffb199;
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #215d42;

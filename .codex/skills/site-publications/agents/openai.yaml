@@ -1,0 +1,4 @@
+interface:
+  display_name: "Site Publications"
+  short_description: "Maintain BibTeX publications and bibliography display."
+  default_prompt: "Use $site-publications to update the publications page."

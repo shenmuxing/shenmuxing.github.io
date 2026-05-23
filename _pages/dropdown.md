@@ -1,13 +1,8 @@
 ---
 layout: page
 title: submenus
-nav: true
+nav: false
 nav_order: 8
-dropdown: true
-children:
-  - title: bookshelf
-    permalink: /books/
-  - title: divider
-  - title: blog
-    permalink: /blog/
 ---
+
+Additional navigation groups will be added only when they have public content.

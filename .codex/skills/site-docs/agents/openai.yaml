@@ -1,0 +1,4 @@
+interface:
+  display_name: "Site Docs"
+  short_description: "Maintain repository documentation and agent instructions."
+  default_prompt: "Use $site-docs to update project documentation."

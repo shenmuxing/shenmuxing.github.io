@@ -1,0 +1,4 @@
+interface:
+  display_name: "Site Content"
+  short_description: "Edit academic site pages, projects, news, and teaching content."
+  default_prompt: "Use $site-content to update this academic website content."

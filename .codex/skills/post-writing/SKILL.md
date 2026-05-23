@@ -59,15 +59,15 @@ redirect: https://example.com
 
 Use these options when deciding whether a post should be public, preview-only, hidden, or excluded from indexes:
 
-| Goal | Use | Effect |
-| --- | --- | --- |
-| Publish normally | Put a dated file in `_posts/` without `published: false` | Builds a post page, appears in `site.posts`, blog lists, latest posts, feed/search/sitemap depending on config |
-| Keep as an unpublished draft | Put the file in `_drafts/` | Does not build normally; appears only with `bundle exec jekyll serve --drafts` or build commands using drafts |
-| Keep in `_posts/` but do not build | Add `published: false` | Skipped by normal Jekyll builds and removed from `site.posts`; visible only with `--unpublished` |
-| Schedule for later | Use a future date in the filename/front matter | Normally skipped until that date unless future posts are enabled |
-| Build page but exclude from sitemap | Add `sitemap: false` | Page still exists and can appear in lists/search unless other logic filters it |
-| Build page but hide from blog lists | Add a custom field such as `hidden: true` and edit templates to filter it | Not supported automatically in this repo; requires changes wherever `site.posts` is used |
-| Remove from local search | Set `posts_in_search: false` globally or customize search indexing | Global setting affects all posts; per-post search exclusion requires template/search-index changes |
+| Goal                                | Use                                                                       | Effect                                                                                                         |
+| ----------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Publish normally                    | Put a dated file in `_posts/` without `published: false`                  | Builds a post page, appears in `site.posts`, blog lists, latest posts, feed/search/sitemap depending on config |
+| Keep as an unpublished draft        | Put the file in `_drafts/`                                                | Does not build normally; appears only with `bundle exec jekyll serve --drafts` or build commands using drafts  |
+| Keep in `_posts/` but do not build  | Add `published: false`                                                    | Skipped by normal Jekyll builds and removed from `site.posts`; visible only with `--unpublished`               |
+| Schedule for later                  | Use a future date in the filename/front matter                            | Normally skipped until that date unless future posts are enabled                                               |
+| Build page but exclude from sitemap | Add `sitemap: false`                                                      | Page still exists and can appear in lists/search unless other logic filters it                                 |
+| Build page but hide from blog lists | Add a custom field such as `hidden: true` and edit templates to filter it | Not supported automatically in this repo; requires changes wherever `site.posts` is used                       |
+| Remove from local search            | Set `posts_in_search: false` globally or customize search indexing        | Global setting affects all posts; per-post search exclusion requires template/search-index changes             |
 
 When the user asks for "not loaded" or "not rendered," clarify whether they mean build output, blog listing, homepage latest posts, sitemap, feed, or search. Prefer `published: false` for complete exclusion from normal builds.
 
