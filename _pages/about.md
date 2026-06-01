@@ -29,21 +29,21 @@ I am a first-year Ph.D. student at the **School of Artificial Intelligence (SAI)
 
 Previously, I obtained my Master's degree from the **Antai College of Economics and Management**, **Shanghai Jiao Tong University**, where I was advised by [Prof. Kai Wang](https://cs-kaiwang.github.io/). Prior to that, I completed my undergraduate studies at **Xi'an Jiaotong University**, under the supervision of [Prof. Haishan Ye](https://scholar.google.com/citations?user=kriqtukAAAAJ).
 
-My research interests primarily lie in the **theory and applications of Reinforcement Learning**.
+My research interests lie in **reinforcement learning theory** and **deep reinforcement learning**.
 
-I am especially interested in how concentration inequalities, online learning ideas, and statistical decision theory can sharpen the analysis of sequential decision-making algorithms.
+I am especially interested in regret analysis and sample efficiency, understanding why deep reinforcement learning works and why it can be unstable, and developing new theoretical tools that can explain, guide, and improve deep reinforcement learning training.
 
 <div class="research-focus">
   <section>
-    <span>Theory</span>
-    <p>Finite-sample guarantees, concentration tools, and regret analysis for reinforcement learning.</p>
+    <span>RL Theory</span>
+    <p>Regret analysis and sample efficiency for reinforcement learning.</p>
   </section>
   <section>
-    <span>Algorithms</span>
-    <p>Principled methods for exploration, estimation, and robust sequential decisions.</p>
+    <span>Mechanisms</span>
+    <p>Understanding why deep reinforcement learning works and why it can be unstable.</p>
   </section>
   <section>
-    <span>Applications</span>
-    <p>Learning systems where reliability and interpretable guarantees matter.</p>
+    <span>Design</span>
+    <p>Theoretical tools that explain, guide, and improve deep reinforcement learning training.</p>
   </section>
 </div>

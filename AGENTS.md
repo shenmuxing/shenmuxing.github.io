@@ -12,6 +12,11 @@ A simple, clean, and responsive Jekyll theme for academics.
 - **Customization & theming?** → [CUSTOMIZE.md](CUSTOMIZE.md)
 - **Quick 5-min start?** → [QUICKSTART.md](QUICKSTART.md)
 
+## Personal Content Sources
+
+- Personal biography material and blog-source notes may be referenced from `D:\ProgramData\OnedriveData\OneDrive\personal\Note&Blog`.
+- Do not automatically import posts or articles from that project into this website unless the user explicitly asks for that import.
+
 ## Essential Commands
 
 ### Local Development (Docker)
