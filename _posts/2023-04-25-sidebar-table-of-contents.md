@@ -2,6 +2,7 @@
 layout: post
 title: a post with table of contents on a sidebar
 date: 2023-04-25 10:14:00-0400
+published: false
 description: an example of a blog post with table of contents on a sidebar
 tags: formatting toc sidebar
 categories: sample-posts
@@ -36,7 +37,7 @@ Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptow
 
 {:data-toc-text="Customizing"}
 
-If you want to learn more about how to customize the table of contents of your sidebar, check the [Tocbot documentation](https://tscanlin.github.io/tocbot/). Notice that you can even customize the text of the heading that will be displayed on the sidebar.
+If you want to learn more about how to customize the table of contents of your sidebar, you can check the [bootstrap-toc](https://afeld.github.io/bootstrap-toc/) documentation. Notice that you can even customize the text of the heading that will be displayed on the sidebar.
 
 ### Example of Sub-Heading 2
 

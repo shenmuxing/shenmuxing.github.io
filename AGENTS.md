@@ -20,6 +20,11 @@
 Runtime/component logic belongs in owning plugin repos (`al_folio_core`, `al_folio_distill`, `al_search`, `al_icons`, `al_cookie`, and other `al-*` gems).
 Long-form documentation lives in `docs/`; keep this root file as the short discovery entry point for coding agents.
 
+## Personal Content Sources
+
+- Personal biography material and blog-source notes may be referenced from `D:\ProgramData\OnedriveData\OneDrive\personal\Note&Blog`.
+- Do not automatically import posts or articles from that project into this website unless the user explicitly asks for that import.
+
 ## Validated Local Command Set
 
 Run from repo root:

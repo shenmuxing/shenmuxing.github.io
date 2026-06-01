@@ -2,6 +2,7 @@
 layout: post
 title: a post with image galleries
 date: 2024-12-04 01:59:00
+published: false
 description: this is what included image galleries could look like
 tags: formatting images
 categories: sample-posts
@@ -15,7 +16,7 @@ images:
 
 The images in this post are all zoomable, arranged into different mini-galleries using different libraries.
 
-## Lightbox2
+## [Lightbox2](https://lokeshdhakar.com/projects/lightbox2/)
 
 <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-2500.jpg" data-lightbox="roadtrip"><img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-200.jpg" /></a>
 <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" data-lightbox="roadtrip"><img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" /></a>
