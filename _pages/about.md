@@ -31,7 +31,7 @@ Previously, I obtained my Master's degree from the **Antai College of Economics 
 
 My research interests lie in **reinforcement learning theory** and **deep reinforcement learning**.
 
-I am especially interested in regret analysis and sample efficiency, understanding why deep reinforcement learning works and why it can be unstable, and developing new theoretical tools that can explain, guide, and improve deep reinforcement learning training.
+I firmly believe that Reinforcement Learning is indispensable for the next generation of AGI. However, current Deep RL suffers from severe sample inefficiency, revealing a fundamental mismatch between theory and empirical practice. My research aims to decode the underlying mechanisms of RL within deep learning contexts, striving to design RL frameworks that rival the sample efficiency of supervised learning.
 
 <div class="research-focus">
   <section>
