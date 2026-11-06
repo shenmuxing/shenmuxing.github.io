@@ -30,7 +30,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/repositories/";
           },
-        },{id: "post-concentration-inequalities-for-reinforcement-learning",
+        },{id: "post-我们依然需要人类的智慧-无法衡量的部分",
+        
+          title: "我们依然需要人类的智慧，无法衡量的部分",
+        
+        description: "关于智能体的搜索能力与人类无法衡量的智慧的思考。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/human-intelligence-beyond-measure-zh/";
+          
+        },
+      },{id: "post-we-still-need-human-intelligence-the-part-beyond-measure",
+        
+          title: "We Still Need Human Intelligence: The Part Beyond Measure",
+        
+        description: "Reflections on search-based agents and the part of human intelligence beyond measure.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/human-intelligence-beyond-measure-en/";
+          
+        },
+      },{id: "post-concentration-inequalities-for-reinforcement-learning",
         
           title: "Concentration Inequalities for Reinforcement Learning",
         
